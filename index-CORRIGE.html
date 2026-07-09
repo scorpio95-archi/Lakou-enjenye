@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lakou Enjenyè — Accueil</title>
+<link rel="stylesheet" href="shared/nav.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="frame">
+
+<!-- ===================== MENU GLOBAL — LAKOU ENJENYÈ ===================== -->
+<!-- À coller juste après <body class="frame"> sur CHAQUE page du site -->
+
+<nav class="main-nav" id="main-nav">
+  <div class="nav-inner">
+
+    <a href="/index.html" class="nav-logo">
+      <span class="nav-logo-mark">LE</span>
+      <span class="nav-logo-text">Lakou Enjenyè</span>
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-links" id="nav-links">
+
+      <a href="/index.html" class="nav-link">Accueil</a>
+
+      <div class="nav-dropdown">
+        <button class="nav-link nav-dropdown-trigger" id="disciplines-trigger" aria-expanded="false">
+          Disciplines <span class="caret">▾</span>
+        </button>
+        <div class="nav-dropdown-menu" id="disciplines-menu">
+          <a href="/genie-civil/index.html">Génie Civil</a>
+          <a href="/genie-electrique/index.html">Génie Électrique</a>
+          <a href="/genie-informatique/index.html">Génie Informatique</a>
+          <a href="/electromecanique/index.html">Électromécanique</a>
+        </div>
+      </div>
+
+      <a href="/a-propos/index.html" class="nav-link">À propos</a>
+
+      <a href="/confidentialite/index.html" class="nav-link">Confidentialité & CGU</a>
+
+      <!-- Visible uniquement une fois connecté — nav.js retire "hidden" après vérification de session -->
+      <a href="/parametres/index.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
+
+      <!-- Zone dynamique : remplacée par nav.js selon l'état de connexion -->
+      <div class="nav-auth-zone" id="nav-auth-zone">
+        <a href="/connexion/index.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+        <a href="/inscription/index.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== FIN MENU GLOBAL ===================== -->
+
+
+<header>
+  <div class="eyebrow">Lakou Enjenyè — Archive Technique</div>
+  <h1>Chaque discipline,<br><span>un chantier.</span></h1>
+  <p class="subhead">Choisis ta branche pour accéder directement à son archive : projets, livrables validés, et travaux d'étudiants en ingénierie à travers Haïti.</p>
+  <div class="scale-note">ÉCH. 1:1 — V.01 — RÉV. PROTOTYPE</div>
+</header>
+
+<main>
+  <div class="section-label"><span class="num">§01</span> Branches disponibles</div>
+  <div class="grid">
+
+    <a class="card" data-index="C-01" href="genie-civil/index.html">
+  <div class="corner"></div>
+  <img class="card-image" src="LIEN_IMAGE_CIVIL" alt="Génie Civil">
+  <div class="card-body">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M4 21V9l8-5 8 5v12M9 21v-6h6v6M7 12h.01M12 12h.01M17 12h.01"/></svg></div>
+    <h3>Génie Civil</h3>
+    <p>Conception de structures, bâtiments, ponts et infrastructures routières. Calculs de charge, matériaux, et résistance des sols.</p>
+    <div class="meta"><span>124 projets archivés</span><span class="go">Voir l'archive →</span></div>
+  </div>
+</a>
+
+    <a class="card" data-index="E-02" href="genie-electrique/index.html">
+  <div class="corner"></div>
+  <img class="card-image" src="LIEN_IMAGE_ELECTRIQUE" alt="Génie Électrique">
+  <div class="card-body">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+    <h3>Génie Électrique</h3>
+    <p>Systèmes électriques, production et distribution d'énergie, réseaux, automatisation et électronique de puissance.</p>
+    <div class="meta"><span>87 projets archivés</span><span class="go">Voir l'archive →</span></div>
+  </div>
+</a>
+
+    <a class="card" data-index="I-03" href="genie-informatique/index.html">
+  <div class="corner"></div>
+  <img class="card-image" src="LIEN_IMAGE_INFORMATIQUE" alt="Génie Informatique">
+  <div class="card-body">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M9 9h6v6H9zM4 9h2M4 15h2M18 9h2M18 15h2M9 4v2M15 4v2M9 18v2M15 18v2"/></svg></div>
+    <h3>Génie Informatique</h3>
+    <p>Logiciels, systèmes embarqués, réseaux informatiques et solutions numériques appliquées à des problèmes concrets.</p>
+    <div class="meta"><span>63 projets archivés</span><span class="go">Voir l'archive →</span></div>
+  </div>
+</a>
+    <a class="card" data-index="M-04" href="electromecanique/index.html">
+  <div class="corner"></div>
+  <img class="card-image" src="LIEN_IMAGE_ELECTROMECANIQUE" alt="Électromécanique">
+  <div class="card-body">
+    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+    <h3>Électromécanique</h3>
+    <p>Machines, moteurs, automatismes et systèmes combinant mécanique et électricité.</p>
+    <div class="meta"><span>0 projet archivé</span><span class="go">Voir l'archive →</span></div>
+  </div>
+</a>
+
+  </div>
+</main>
+
+<footer>
+  <span>LAKOU ENJENYÈ © 2026</span>
+  <span>V.01</span>
+</footer>
+  <script src="shared/nav.js" defer></script>
+  </body>
+ 
+</html>
