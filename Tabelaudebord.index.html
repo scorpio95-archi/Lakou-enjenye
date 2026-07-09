@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord — Lakou Enjenyè</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/nav.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="frame">
+
+  <!-- ===================== MENU GLOBAL (coller nav.html ici) ===================== -->
+  <!-- Remplacer ce commentaire par le contenu de shared/nav.html -->
+
+  <!-- ===================== GARDE-FOU CONNEXION ===================== -->
+  <!-- Affiché uniquement si personne n'est connecté (app.js gère le hidden) -->
+  <div id="auth-required" class="auth-required" hidden>
+    <p>Tu dois être connecté pour accéder à ton tableau de bord.</p>
+    <a href="../connexion/index.html" class="btn-primary">Se connecter</a>
+  </div>
+
+  <!-- ===================== CONTENU DU DASHBOARD ===================== -->
+  <main class="dashboard" id="dashboard-content" hidden>
+
+    <!-- ----- En-tête ----- -->
+    <header class="dash-header">
+      <div class="eyebrow">Lakou Enjenyè — Espace personnel</div>
+      <h1>Mon <span>Tableau de bord</span></h1>
+    </header>
+
+    <!-- ----- Profil ----- -->
+    <section class="profile-card" id="profile-card">
+      <div class="profile-avatar-wrap">
+        <img id="profile-avatar" src="" alt="Avatar" class="profile-avatar">
+        <label class="avatar-upload-btn" for="avatar-input">Changer</label>
+        <input type="file" id="avatar-input" accept="image/*" hidden>
+      </div>
+
+      <div class="profile-fields">
+        <div class="form-group">
+          <label for="profile-full-name">Nom complet</label>
+          <input type="text" id="profile-full-name" placeholder="Ton nom">
+        </div>
+        <div class="form-group">
+          <label for="profile-discipline">Discipline</label>
+          <select id="profile-discipline"></select>
+        </div>
+        <div class="form-group">
+          <label for="profile-school">École</label>
+          <select id="profile-school"></select>
+        </div>
+        <button class="btn-secondary" id="save-profile-btn">Enregistrer le profil</button>
+        <p class="form-success" id="profile-success" hidden>Profil mis à jour ✓</p>
+      </div>
+    </section>
+
+    <!-- ----- Liste des projets ----- -->
+    <section class="projects-section">
+      <div class="section-label"><span class="num">§01</span> Mes projets</div>
+
+      <div class="projects-toolbar">
+        <div class="status-tabs" id="status-tabs">
+          <button class="status-tab active" data-status="all">Tous</button>
+          <button class="status-tab" data-status="draft">Brouillon</button>
+          <button class="status-tab" data-status="in_progress">En cours</button>
+          <button class="status-tab" data-status="submitted">Soumis</button>
+          <button class="status-tab" data-status="validated">Validé</button>
+        </div>
+        <button class="btn-primary" id="new-project-btn">+ Nouveau projet</button>
+      </div>
+
+      <div class="grid" id="my-projects-grid">
+        <p class="loading-msg" id="projects-loading">Chargement de tes projets...</p>
+        <p class="empty-msg" id="projects-empty" hidden>Aucun projet pour l'instant — crée le premier !</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== MODALE : NOUVEAU PROJET ===================== -->
+  <div class="modal-overlay" id="create-project-modal" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="create-modal-close" aria-label="Fermer">✕</button>
+      <div class="section-label small"><span class="num">§02</span> Nouveau projet</div>
+
+      <form id="create-project-form" class="auth-form">
+        <div class="form-group">
+          <label for="new-title">Titre du projet</label>
+          <input type="text" id="new-title" required placeholder="Ex: Pont à poutres — Rivière des Cayes">
+        </div>
+        <div class="form-group">
+          <label for="new-description">Description</label>
+          <textarea id="new-description" rows="4" placeholder="Décris ton projet en quelques phrases..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="new-cover">Image de couverture (URL)</label>
+          <input type="url" id="new-cover" placeholder="https://...">
+        </div>
+        <p class="form-error" id="create-error" hidden></p>
+        <button type="submit" class="btn-primary" id="create-submit-btn">Créer le projet</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================== MODALE : ÉDITION PROJET + LIVRABLES ===================== -->
+  <div class="modal-overlay" id="edit-project-modal" hidden>
+    <div class="modal-card modal-card-wide">
+      <button class="modal-close" id="edit-modal-close" aria-label="Fermer">✕</button>
+
+      <div class="section-label small"><span class="num">§03</span> <span id="edit-project-title">Projet</span></div>
+
+      <div class="form-group">
+        <label for="edit-status">Statut du projet</label>
+        <select id="edit-status">
+          <option value="draft">Brouillon</option>
+          <option value="in_progress">En cours</option>
+          <option value="submitted">Soumis</option>
+        </select>
+        <p class="field-hint">Le statut "Validé" ne peut être mis que par un enseignant.</p>
+      </div>
+
+      <div class="section-label small"><span class="num">§04</span> Livrables</div>
+      <div class="deliverables-edit-list" id="deliverables-edit-list">
+        <!-- injecté par app.js : 7 blocs éditables -->
+      </div>
+
+      <p class="form-success" id="edit-success" hidden>Enregistré ✓</p>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+  <script src="../shared/nav.js" defer></script>
+</body>
+</html>
