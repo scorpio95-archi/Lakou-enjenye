@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription — Lakou Enjenyè</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/nav.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="frame">
+
+<!-- ===================== MENU GLOBAL — LAKOU ENJENYÈ ===================== -->
+<!-- À coller juste après <body class="frame"> sur CHAQUE page du site -->
+
+<nav class="main-nav" id="main-nav">
+  <div class="nav-inner">
+
+    <a href="/index.html" class="nav-logo">
+      <span class="nav-logo-mark">LE</span>
+      <span class="nav-logo-text">Lakou Enjenyè</span>
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-links" id="nav-links">
+
+      <a href="/index.html" class="nav-link">Accueil</a>
+
+      <div class="nav-dropdown">
+        <button class="nav-link nav-dropdown-trigger" id="disciplines-trigger" aria-expanded="false">
+          Disciplines <span class="caret">▾</span>
+        </button>
+        <div class="nav-dropdown-menu" id="disciplines-menu">
+          <a href="/genie-civil/index.html">Génie Civil</a>
+          <a href="/genie-electrique/index.html">Génie Électrique</a>
+          <a href="/genie-informatique/index.html">Génie Informatique</a>
+          <a href="/electromecanique/index.html">Électromécanique</a>
+        </div>
+      </div>
+
+      <a href="/a-propos/index.html" class="nav-link">À propos</a>
+
+      <a href="/confidentialite/index.html" class="nav-link">Confidentialité & CGU</a>
+
+      <!-- Visible uniquement une fois connecté — nav.js retire "hidden" après vérification de session -->
+      <a href="/parametres/index.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
+
+      <!-- Zone dynamique : remplacée par nav.js selon l'état de connexion -->
+      <div class="nav-auth-zone" id="nav-auth-zone">
+        <a href="/connexion/index.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
+        <a href="/inscription/index.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== FIN MENU GLOBAL ===================== -->
+
+  <main class="auth-page">
+    <div class="auth-card">
+
+      <div class="eyebrow">Lakou Enjenyè</div>
+      <h1>Créer un compte</h1>
+      <p class="subhead">Rejoins l'archive technique des étudiants ingénieurs d'Haïti.</p>
+
+      <form id="signup-form" class="auth-form">
+
+        <div class="form-group">
+          <label for="full_name">Nom complet</label>
+          <input type="text" id="full_name" name="full_name" required placeholder="Jean-Baptiste Michel">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="toi@exemple.com">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" required minlength="8" placeholder="8 caractères minimum">
+        </div>
+
+        <div class="form-group">
+          <label for="role">Je suis</label>
+          <select id="role" name="role" required>
+            <option value="student" selected>Étudiant</option>
+            <option value="teacher">Enseignant</option>
+            <option value="visitor">Curieux</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="discipline-group">
+          <label for="discipline">Discipline</label>
+          <select id="discipline" name="discipline" required>
+            <option value="">Choisir...</option>
+            <option value="genie-civil">Génie Civil</option>
+            <option value="genie-electrique">Génie Électrique</option>
+            <option value="genie-informatique">Génie Informatique</option>
+            <option value="electromecanique">Électromécanique</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="school">École</label>
+          <select id="school" name="school">
+            <option value="">Choisir...</option>
+            <option value="fds-ueh">Faculté des Sciences — UEH</option>
+            <option value="esih">ESIH (École Supérieure d'Infotronique d'Haïti)</option>
+            <option value="uniq">Université Quisqueya</option>
+            <option value="unitech">UNITECH</option>
+            <option value="isteah">ISTEAH</option>
+            <option value="undh">Université Notre-Dame d'Haïti</option>
+            <option value="caraibe">Université Caraïbe</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="school-other-group" hidden>
+          <label for="school_other">Précise le nom de ton école</label>
+          <input type="text" id="school_other" name="school_other" placeholder="Nom de ton établissement">
+        </div>
+
+        <p class="form-error" id="form-error" hidden></p>
+        <p class="form-success" id="form-success" hidden></p>
+
+        <button type="submit" class="btn-primary" id="submit-btn">Créer mon compte</button>
+      </form>
+
+      <p class="auth-switch">Déjà un compte ? <a href="../connexion/index.html">Se connecter</a></p>
+      <p class="auth-legal">En t'inscrivant, tu acceptes nos <a href="../confidentialite/index.html">Conditions Générales d'Utilisation</a>.</p>
+
+    </div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+  <script src="../shared/nav.js" defer></script>
+</body>
+</html>
