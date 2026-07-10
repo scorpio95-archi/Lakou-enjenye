@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paramètres — Lakou Enjenyè</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/nav.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="frame">
+
+  <!-- ===================== MENU GLOBAL (coller nav.html ici) ===================== -->
+  <!-- Remplacer ce commentaire par le contenu de shared/nav.html -->
+
+  <div id="auth-required" class="auth-required" hidden>
+    <p>Tu dois être connecté pour accéder à tes paramètres.</p>
+    <a href="../connexion/index.html" class="btn-primary">Se connecter</a>
+  </div>
+
+  <main class="settings-page" id="settings-content" hidden>
+
+    <header class="settings-header">
+      <div class="eyebrow">Lakou Enjenyè</div>
+      <h1>Paramètres</h1>
+    </header>
+
+    <!-- ----- Compte ----- -->
+    <section class="settings-block">
+      <div class="section-label"><span class="num">§01</span> Compte</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">Email</span>
+          <span class="info-value" id="account-email">—</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Rôle</span>
+          <span class="info-value" id="account-role">—</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Membre depuis</span>
+          <span class="info-value" id="account-since">—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ----- Sécurité : mot de passe ----- -->
+    <section class="settings-block">
+      <div class="section-label"><span class="num">§02</span> Changer de mot de passe</div>
+      <form id="password-form" class="settings-form">
+        <div class="form-group">
+          <label for="new-password">Nouveau mot de passe</label>
+          <input type="password" id="new-password" minlength="8" required placeholder="8 caractères minimum">
+        </div>
+        <p class="form-error" id="password-error" hidden></p>
+        <p class="form-success" id="password-success" hidden></p>
+        <button type="submit" class="btn-secondary">Mettre à jour</button>
+      </form>
+    </section>
+
+    <!-- ----- Sécurité : email ----- -->
+    <section class="settings-block">
+      <div class="section-label"><span class="num">§03</span> Changer d'email</div>
+      <form id="email-form" class="settings-form">
+        <div class="form-group">
+          <label for="new-email">Nouvel email</label>
+          <input type="email" id="new-email" required placeholder="nouveau@exemple.com">
+        </div>
+        <p class="field-hint">Un email de confirmation sera envoyé à la nouvelle adresse.</p>
+        <p class="form-error" id="email-error" hidden></p>
+        <p class="form-success" id="email-success" hidden></p>
+        <button type="submit" class="btn-secondary">Mettre à jour</button>
+      </form>
+    </section>
+
+    <!-- ----- Notifications ----- -->
+    <section class="settings-block">
+      <div class="section-label"><span class="num">§04</span> Notifications</div>
+      <label class="toggle-row">
+        <span>Être notifié quand un livrable est validé</span>
+        <input type="checkbox" id="notif-toggle">
+      </label>
+    </section>
+
+    <!-- ----- Déconnexion ----- -->
+    <section class="settings-block">
+      <div class="section-label"><span class="num">§05</span> Session</div>
+      <button class="btn-secondary" id="logout-btn">Se déconnecter</button>
+    </section>
+
+    <!-- ----- Zone dangereuse ----- -->
+    <section class="settings-block danger-zone">
+      <div class="section-label danger"><span class="num">§06</span> Zone dangereuse</div>
+      <p class="danger-text">La suppression de ton compte est <strong>définitive</strong>. Tous tes projets, livrables et fichiers seront supprimés et ne pourront pas être récupérés.</p>
+      <button class="btn-danger" id="open-delete-btn">Supprimer mon compte</button>
+    </section>
+
+  </main>
+
+  <!-- ===================== MODALE CONFIRMATION SUPPRESSION ===================== -->
+  <div class="modal-overlay" id="delete-modal" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="delete-modal-close" aria-label="Fermer">✕</button>
+      <div class="section-label small danger"><span class="num">§</span> Confirmer la suppression</div>
+      <p class="danger-text">Entre ton mot de passe pour confirmer. Cette action est irréversible.</p>
+      <form id="delete-form" class="settings-form">
+        <div class="form-group">
+          <label for="delete-password">Mot de passe</label>
+          <input type="password" id="delete-password" required placeholder="••••••••">
+        </div>
+        <p class="form-error" id="delete-error" hidden></p>
+        <button type="submit" class="btn-danger" id="delete-confirm-btn">Supprimer définitivement</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+  <script src="../shared/nav.js" defer></script>
+</body>
+</html>
