@@ -82,11 +82,12 @@ async function loadSchoolOptions() {
     schoolSelect.appendChild(opt);
   });
 }
+
 // ===================== PROFIL =====================
 async function loadProfile() {
   const { data, error } = await supabase
     .from('profiles')
-    .select('full_name, discipline_id, school_id, avatar_url')
+    .select('full_name, discipline_id, school_id, avatar_url, role')
     .eq('id', currentUser.id)
     .single();
 
@@ -97,6 +98,15 @@ async function loadProfile() {
   disciplineSelect.value = data.discipline_id || '';
   schoolSelect.value = data.school_id || '';
   avatarImg.src = data.avatar_url || 'https://api.dicebear.com/7.x/shapes/svg?seed=' + currentUser.id;
+
+  const roleBadge = document.getElementById('role-badge');
+  const roleLabels = { admin: '🛡 Admin', teacher: '🎓 Enseignant', student: 'Étudiant', visitor: 'Curieux' };
+  if (data.role && data.role !== 'student') {
+    roleBadge.textContent = roleLabels[data.role] || data.role;
+    roleBadge.hidden = false;
+  } else {
+    roleBadge.hidden = true;
+  }
 }
 
 avatarInput.addEventListener('change', async () => {
@@ -141,8 +151,6 @@ saveProfileBtn.addEventListener('click', async () => {
     setTimeout(() => { profileSuccess.hidden = true; }, 2500);
   }
 });
-
-// ===================== MES PROJETS =====================
 async function loadMyProjects() {
   const { data, error } = await supabase
     .from('projects')
