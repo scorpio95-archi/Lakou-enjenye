@@ -1,0 +1,163 @@
+:root{
+  --blue-deep: #0a1930;
+  --blue-line: #1d3a63;
+  --blue-grid: rgba(90,140,200,0.12);
+  --cyan: #4fd1c5;
+  --amber: #e8a33d;
+  --paper: #eef3f8;
+  --ink: #0a1930;
+  --muted: #5c7699;
+}
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+
+body{
+  background: var(--blue-deep);
+  background-image:
+    linear-gradient(var(--blue-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blue-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  font-family: 'Archivo', sans-serif;
+  color: var(--paper);
+  min-height: 100vh;
+}
+
+.frame::before, .frame::after{
+  content:'';
+  position: fixed;
+  width: 14px; height: 14px;
+  border: 2px solid var(--cyan);
+  opacity: .6;
+  z-index: 5;
+}
+.frame::before{ top: 20px; left: 20px; border-right:none; border-bottom:none; }
+.frame::after{ bottom: 20px; right: 20px; border-left:none; border-top:none; }
+
+/* ===================== PAGE LÉGALE ===================== */
+.legal-page{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 8vw 100px;
+}
+
+.legal-header{ margin-bottom: 24px; }
+
+.eyebrow{
+  font-family:'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.eyebrow::before{ content:''; width: 30px; height:1px; background: var(--cyan); }
+
+h1{
+  font-size: clamp(2rem, 5.5vw, 2.8rem);
+  font-weight: 800;
+  margin-top: 14px;
+  letter-spacing: -1px;
+}
+
+.legal-updated{
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 12px;
+  letter-spacing: .5px;
+}
+
+/* ===================== SOMMAIRE ===================== */
+.legal-toc{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--blue-line);
+  padding: 18px 20px;
+  margin-bottom: 48px;
+}
+
+.legal-toc a{
+  font-family: 'Space Mono', monospace;
+  font-size: 12.5px;
+  color: var(--cyan);
+  text-decoration: none;
+  letter-spacing: .3px;
+}
+.legal-toc a:hover{ text-decoration: underline; }
+
+/* ===================== CONTENU ===================== */
+.legal-content{ margin-bottom: 56px; }
+
+.section-label{
+  font-family:'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+.section-label .num{ color: var(--amber); }
+.section-label::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background: linear-gradient(90deg, var(--blue-line), transparent);
+}
+
+.legal-block{
+  margin-bottom: 32px;
+  scroll-margin-top: 24px;
+}
+
+.legal-block h2{
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 12px;
+}
+
+.legal-block p{
+  font-size: .98rem;
+  line-height: 1.75;
+  color: #c8d6e8;
+  margin-bottom: 10px;
+}
+
+.legal-block strong{
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.legal-block ul{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.legal-block li{
+  font-size: .95rem;
+  line-height: 1.6;
+  color: #c8d6e8;
+  padding-left: 20px;
+  position: relative;
+}
+
+.legal-block li::before{
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--amber);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 600px){
+  .legal-block p, .legal-block li{ font-size: .92rem; }
+}
