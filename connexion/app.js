@@ -34,12 +34,6 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
-  // Connexion réussie — le tableau de bord n'existe pas encore,
-  // donc on affiche juste une confirmation pour l'instant.
-  submitBtn.textContent = 'Connecté ✓';
-  errorEl.hidden = true;
-  const successMsg = document.createElement('p');
-  successMsg.className = 'form-success';
-  successMsg.textContent = `Bienvenue ! Session active pour ${data.user.email}. Le tableau de bord arrive bientôt.`;
-  form.appendChild(successMsg);
+  // Connexion réussie — redirection directe vers le tableau de bord
+  window.location.href = '../tableau-de-bord/index.html';
 });
