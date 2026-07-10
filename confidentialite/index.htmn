@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confidentialité & CGU — Lakou Enjenyè</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/nav.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="frame">
+
+  <!-- ===================== MENU GLOBAL (coller nav.html ici) ===================== -->
+  <!-- Remplacer ce commentaire par le contenu de shared/nav.html -->
+
+  <main class="legal-page">
+
+    <header class="legal-header">
+      <div class="eyebrow">Lakou Enjenyè</div>
+      <h1>Confidentialité & CGU</h1>
+      <p class="legal-updated">Dernière mise à jour : Juillet 2026</p>
+    </header>
+
+    <nav class="legal-toc">
+      <a href="#confidentialite">Politique de confidentialité</a>
+      <a href="#cgu">Conditions Générales d'Utilisation</a>
+    </nav>
+
+    <!-- ===================== CONFIDENTIALITÉ ===================== -->
+    <article class="legal-content" id="confidentialite">
+      <div class="section-label"><span class="num">§01</span> Politique de confidentialité</div>
+
+      <section class="legal-block">
+        <h2>Quelles données sont collectées ?</h2>
+        <p>Lors de ton inscription, nous collectons ton nom complet, ton adresse email, ton rôle (étudiant, enseignant ou curieux), ta discipline et ton établissement. Lorsque tu crées un projet, nous stockons les informations que tu fournis volontairement : titre, description, fichiers techniques, images, et le contenu de tes livrables.</p>
+      </section>
+
+      <section class="legal-block">
+        <h2>Comment ces données sont-elles utilisées ?</h2>
+        <ul>
+          <li>Afficher ton profil et tes projets sur la plateforme</li>
+          <li>Permettre aux enseignants de valider tes livrables</li>
+          <li>Rendre tes projets validés visibles publiquement dans l'archive, une fois que tu choisis de les soumettre</li>
+        </ul>
+        <p>Nous ne vendons, ne louons, ni ne partageons tes données personnelles avec des tiers à des fins commerciales.</p>
+      </section>
+
+      <section class="legal-block">
+        <h2>Où sont stockées les données ?</h2>
+        <p>Les données sont hébergées via <strong>Supabase</strong>, un service d'hébergement sécurisé. L'accès à tes informations personnelles et à tes projets non validés est protégé par des règles d'accès strictes : toi seul, ainsi que les enseignants et administrateurs habilités, peuvent y accéder.</p>
+      </section>
+
+      <section class="legal-block">
+        <h2>Tes droits</h2>
+        <p>Tu peux à tout moment demander la modification ou la suppression de ton compte et de tes données en nous contactant. Tes projets déjà validés et publiés dans l'archive publique pourront être conservés à des fins d'archivage historique, sauf demande explicite contraire de ta part.</p>
+      </section>
+
+      <section class="legal-block">
+        <h2>Cookies et suivi</h2>
+        <p>Lakou Enjenyè n'utilise pas de cookies publicitaires ni de traceurs tiers. Seules les données techniques nécessaires à ta connexion (session d'authentification) sont utilisées.</p>
+      </section>
+    </article>
+
+    <!-- ===================== CGU ===================== -->
+    <article class="legal-content" id="cgu">
+      <div class="section-label"><span class="num">§02</span> Conditions Générales d'Utilisation</div>
+
+      <section class="legal-block">
+        <h2>Objet</h2>
+        <p>Lakou Enjenyè est une plateforme d'archivage destinée aux étudiants en ingénierie d'Haïti. Elle permet de documenter, partager et faire valider des projets techniques dans le cadre académique.</p>
+      </section>
+
+      <section class="legal-block">
+        <h2>Propriété du contenu</h2>
+        <p>Tu restes propriétaire de tous les projets, fichiers et contenus que tu publies sur la plateforme. En les publiant, tu accordes à Lakou Enjenyè le droit de les afficher publiquement une fois validés, dans le cadre de l'archive technique.</p>
+      </section>
+
+      <section class="legal-block">
+        <h2>Contenu interdit</h2>
+        <p>Tu t'engages à ne pas publier de contenu :</p>
+        <ul>
+          <li>Plagié ou dont tu n'es pas l'auteur légitime</li>
+          <li>Diffamatoire, haineux ou discriminatoire</li>
+          <li>Sans lien avec un projet technique ou académique réel</li>
+        </ul>
+      </section>
+
+      <section class="legal-block">
+        <h2>Validation des projets</h2>
+        <p>Les projets soumis sont examinés par des enseignants ou administrateurs avant d'apparaître comme "validés" dans l'archive publique. Cette validation atteste de la conformité technique du projet, pas d'un jugement de valeur sur sa qualité artistique ou stylistique.</p>
+      </section>
+
+      <section class="legal-block">
+        <h2>Suspension de compte</h2>
+        <p>Lakou Enjenyè se réserve le droit de suspendre ou supprimer tout compte ne respectant pas ces conditions, notamment en cas de contenu interdit ou d'usage frauduleux de la plateforme.</p>
+      </section>
+
+      <section class="legal-block">
+        <h2>Évolution des conditions</h2>
+        <p>Ces conditions peuvent évoluer avec le temps. Les utilisateurs seront informés de tout changement important via la plateforme.</p>
+      </section>
+    </article>
+
+  </main>
+
+  <script src="../shared/nav.js" defer></script>
+</body>
+</html>
