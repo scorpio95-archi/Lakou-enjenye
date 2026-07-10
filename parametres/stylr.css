@@ -1,0 +1,285 @@
+:root{
+  --blue-deep: #0a1930;
+  --blue-line: #1d3a63;
+  --blue-grid: rgba(90,140,200,0.12);
+  --cyan: #4fd1c5;
+  --amber: #e8a33d;
+  --paper: #eef3f8;
+  --ink: #0a1930;
+  --muted: #5c7699;
+  --error: #e8615a;
+}
+
+[hidden]{ display: none !important; }
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+
+body{
+  background: var(--blue-deep);
+  background-image:
+    linear-gradient(var(--blue-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blue-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  font-family: 'Archivo', sans-serif;
+  color: var(--paper);
+  min-height: 100vh;
+}
+
+.frame::before, .frame::after{
+  content:'';
+  position: fixed;
+  width: 14px; height: 14px;
+  border: 2px solid var(--cyan);
+  opacity: .6;
+  z-index: 5;
+}
+.frame::before{ top: 20px; left: 20px; border-right:none; border-bottom:none; }
+.frame::after{ bottom: 20px; right: 20px; border-left:none; border-top:none; }
+
+/* ===================== GARDE-FOU ===================== */
+.auth-required{
+  max-width: 420px;
+  margin: 100px auto;
+  text-align: center;
+  padding: 40px 30px;
+  border: 1px solid var(--blue-line);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.auth-required p{ color: var(--muted); }
+
+/* ===================== PAGE ===================== */
+.settings-page{
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 8vw 100px;
+}
+
+.settings-header{ margin-bottom: 40px; }
+
+.eyebrow{
+  font-family:'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.eyebrow::before{ content:''; width: 30px; height:1px; background: var(--cyan); }
+
+h1{
+  font-size: clamp(2rem, 5.5vw, 2.8rem);
+  font-weight: 800;
+  margin-top: 14px;
+  letter-spacing: -1px;
+}
+
+/* ===================== BLOCS ===================== */
+.settings-block{
+  margin-bottom: 40px;
+  border: 1px solid var(--blue-line);
+  padding: 24px;
+  background: rgba(255,255,255,0.02);
+}
+
+.section-label{
+  font-family:'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+.section-label.small{ font-size: 11px; margin-bottom: 14px; }
+.section-label .num{ color: var(--amber); }
+.section-label.danger .num{ color: var(--error); }
+.section-label::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background: linear-gradient(90deg, var(--blue-line), transparent);
+}
+
+/* ===================== INFO COMPTE ===================== */
+.info-grid{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.info-item{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--blue-line);
+}
+.info-item:last-child{ border-bottom: none; padding-bottom: 0; }
+.info-label{
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.info-value{ font-size: .92rem; font-weight: 600; }
+
+/* ===================== FORMULAIRES ===================== */
+.settings-form{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label{
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.form-group input{
+  background: var(--blue-deep);
+  border: 1px solid var(--blue-line);
+  color: var(--paper);
+  padding: 11px 13px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+}
+.form-group input:focus{ outline: none; border-color: var(--cyan); }
+
+.field-hint{
+  font-family: 'Space Mono', monospace;
+  font-size: 10.5px;
+  color: var(--muted);
+}
+
+.form-error{
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--error);
+  border: 1px solid var(--error);
+  padding: 10px 12px;
+  background: rgba(232, 97, 90, 0.08);
+}
+.form-success{
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--cyan);
+}
+
+/* ===================== BOUTONS ===================== */
+.btn-secondary{
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+  padding: 12px 18px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all .2s ease;
+}
+.btn-secondary:hover{ background: var(--cyan); color: var(--blue-deep); }
+
+.btn-primary{
+  background: var(--cyan);
+  color: var(--blue-deep);
+  border: none;
+  padding: 13px 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-danger{
+  background: transparent;
+  color: var(--error);
+  border: 1px solid var(--error);
+  padding: 12px 18px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.btn-danger:hover{ background: var(--error); color: var(--paper); }
+
+/* ===================== TOGGLE NOTIFICATIONS ===================== */
+.toggle-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: .92rem;
+}
+.toggle-row input[type="checkbox"]{
+  width: 20px;
+  height: 20px;
+  accent-color: var(--cyan);
+  cursor: pointer;
+}
+
+/* ===================== ZONE DANGEREUSE ===================== */
+.danger-zone{ border-color: var(--error); }
+.danger-text{
+  color: #e8b3af;
+  font-size: .9rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+.danger-text strong{ color: var(--error); }
+
+/* ===================== MODALE ===================== */
+.modal-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 12, 25, 0.85);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 20px;
+  overflow-y: auto;
+  z-index: 500;
+}
+.modal-overlay[hidden]{ display: none; }
+
+.modal-card{
+  background: var(--blue-deep);
+  border: 1px solid var(--error);
+  max-width: 420px;
+  width: 100%;
+  padding: 32px;
+  position: relative;
+}
+
+.modal-close{
+  position: absolute;
+  top: 16px; right: 16px;
+  background: none;
+  border: 1px solid var(--blue-line);
+  color: var(--paper);
+  width: 32px; height: 32px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.modal-close:hover{ border-color: var(--cyan); }
