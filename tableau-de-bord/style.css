@@ -1,5 +1,4 @@
 :root{
-  [hidden]{ display: none !important; }
   --blue-deep: #0a1930;
   --blue-line: #1d3a63;
   --blue-grid: rgba(90,140,200,0.12);
@@ -121,6 +120,17 @@ h1 span{ color: var(--amber); }
   gap: 16px;
 }
 
+.role-badge{
+  align-self: flex-start;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+}
+
 .form-group{
   display: flex;
   flex-direction: column;
@@ -157,7 +167,6 @@ h1 span{ color: var(--amber); }
   margin-top: 4px;
 }
 
-/* ===================== BOUTONS ===================== */
 .btn-primary{
   background: var(--cyan);
   color: var(--blue-deep);
@@ -260,7 +269,6 @@ h1 span{ color: var(--amber); }
   color: var(--blue-deep);
 }
 
-/* ===================== GRILLE PROJETS ===================== */
 .grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -356,7 +364,6 @@ h1 span{ color: var(--amber); }
   gap: 18px;
   margin-top: 10px;
 }
-
 /* ===================== LIVRABLES ÉDITABLES ===================== */
 .deliverables-edit-list{
   display: flex;
