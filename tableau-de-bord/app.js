@@ -1,4 +1,3 @@
-
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
 const SUPABASE_URL = 'https://bblhqjdymssqhfbwoxie.supabase.co';
@@ -83,7 +82,6 @@ async function loadSchoolOptions() {
     schoolSelect.appendChild(opt);
   });
 }
-
 // ===================== PROFIL =====================
 async function loadProfile() {
   const { data, error } = await supabase
