@@ -1,0 +1,119 @@
+:root{
+  --blue-deep: #0a1930;
+  --blue-line: #1d3a63;
+  --blue-grid: rgba(90,140,200,0.12);
+  --cyan: #4fd1c5;
+  --amber: #e8a33d;
+  --paper: #eef3f8;
+  --ink: #0a1930;
+  --muted: #5c7699;
+}
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+
+body{
+  background: var(--blue-deep);
+  background-image:
+    linear-gradient(var(--blue-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blue-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  font-family: 'Archivo', sans-serif;
+  color: var(--paper);
+  min-height: 100vh;
+}
+
+.frame::before, .frame::after{
+  content:'';
+  position: fixed;
+  width: 14px; height: 14px;
+  border: 2px solid var(--cyan);
+  opacity: .6;
+  z-index: 5;
+}
+.frame::before{ top: 20px; left: 20px; border-right:none; border-bottom:none; }
+.frame::after{ bottom: 20px; right: 20px; border-left:none; border-top:none; }
+
+/* ===================== PAGE À PROPOS ===================== */
+.about-page{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 8vw 100px;
+}
+
+.about-header{ margin-bottom: 40px; }
+
+.eyebrow{
+  font-family:'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.eyebrow::before{ content:''; width: 30px; height:1px; background: var(--cyan); }
+
+h1{
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  font-weight: 800;
+  margin-top: 14px;
+  letter-spacing: -1px;
+}
+
+/* ===================== CONTENU ===================== */
+.about-content{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.lede{
+  font-size: 1.25rem;
+  line-height: 1.65;
+  color: var(--paper);
+  font-weight: 500;
+  border-left: 2px solid var(--amber);
+  padding-left: 20px;
+}
+
+.about-block{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.section-label{
+  font-family:'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+.section-label .num{ color: var(--amber); }
+.section-label::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background: linear-gradient(90deg, var(--blue-line), transparent);
+}
+
+.about-block p{
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: #c8d6e8; /* légèrement moins vif que --paper : confort de lecture sur fond sombre */
+}
+
+.about-block strong{
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 600px){
+  .lede{ font-size: 1.1rem; padding-left: 16px; }
+  .about-block p{ font-size: .98rem; }
+}
