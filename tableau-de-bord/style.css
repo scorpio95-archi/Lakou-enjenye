@@ -1,4 +1,5 @@
 :root{
+    [hidden]{ display: none !important; }
   --blue-deep: #0a1930;
   --blue-line: #1d3a63;
   --blue-grid: rgba(90,140,200,0.12);
