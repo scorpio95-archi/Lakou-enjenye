@@ -1,5 +1,4 @@
 :root{
-  [hidden]{ display: none !important; }
   --blue-deep: #0a1930;
   --blue-line: #1d3a63;
   --blue-grid: rgba(90,140,200,0.12);
@@ -73,6 +72,61 @@ h1{
 }
 h1 span{ color: var(--amber); }
 
+/* ===================== PANNEAU STATS ADMIN ===================== */
+.stats-panel{
+  margin-bottom: 48px;
+  border: 1px solid var(--amber);
+  background: rgba(232, 163, 61, 0.04);
+  padding: 24px 28px;
+}
+
+.stats-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-item{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+  padding: 14px 8px;
+  border: 1px solid var(--blue-line);
+}
+
+.stat-value{
+  font-family: 'Space Mono', monospace;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--amber);
+}
+
+.stat-label{
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stats-by-discipline{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.discipline-stat-row{
+  display: flex;
+  justify-content: space-between;
+  font-size: .88rem;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--blue-line);
+}
+.discipline-stat-row:last-child{ border-bottom: none; }
+.discipline-stat-row span:last-child{ color: var(--cyan); font-weight: 700; }
 /* ===================== CARTE PROFIL ===================== */
 .profile-card{
   display: flex;
@@ -168,6 +222,7 @@ h1 span{ color: var(--amber); }
   margin-top: 4px;
 }
 
+/* ===================== BOUTONS ===================== */
 .btn-primary{
   background: var(--cyan);
   color: var(--blue-deep);
@@ -214,7 +269,6 @@ h1 span{ color: var(--amber); }
   padding: 10px 12px;
   background: rgba(232, 97, 90, 0.08);
 }
-
 /* ===================== SECTION PROJETS ===================== */
 .section-label{
   font-family:'Space Mono', monospace;
@@ -228,6 +282,7 @@ h1 span{ color: var(--amber); }
   gap: 12px;
 }
 .section-label.small{ font-size: 11px; margin-bottom: 18px; }
+.section-label.small{ font-size: 11px; margin-bottom: 10px; }
 .section-label .num{ color: var(--amber); }
 .section-label::after{
   content:'';
@@ -270,6 +325,7 @@ h1 span{ color: var(--amber); }
   color: var(--blue-deep);
 }
 
+/* ===================== GRILLE PROJETS ===================== */
 .grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
