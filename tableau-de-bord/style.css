@@ -1,5 +1,4 @@
 :root{
-  [hidden]{ display: none !important; }
   --blue-deep: #0a1930;
   --blue-line: #1d3a63;
   --blue-grid: rgba(90,140,200,0.12);
@@ -51,7 +50,13 @@ body{
 /* ===================== DASHBOARD ===================== */
 .dashboard{ padding: 40px 8vw 100px; max-width: 1200px; margin: 0 auto; }
 
-.dash-header{ margin-bottom: 32px; }
+.dash-header{
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
 
 .eyebrow{
   font-family:'Space Mono', monospace;
@@ -128,6 +133,7 @@ h1 span{ color: var(--amber); }
 }
 .discipline-stat-row:last-child{ border-bottom: none; }
 .discipline-stat-row span:last-child{ color: var(--cyan); font-weight: 700; }
+
 /* ===================== CARTE PROFIL ===================== */
 .profile-card{
   display: flex;
@@ -167,6 +173,27 @@ h1 span{ color: var(--amber); }
   transition: all .2s ease;
 }
 .avatar-upload-btn:hover{ background: var(--cyan); color: var(--blue-deep); }
+
+.file-upload-btn{
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--cyan);
+  border: 1px dashed var(--cyan);
+  padding: 12px 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: all .2s ease;
+}
+.file-upload-btn:hover{ background: rgba(79,209,197,0.08); }
+
+.file-selected-name{
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+  display: block;
+}
 
 .profile-fields{
   flex: 1;
@@ -222,7 +249,6 @@ h1 span{ color: var(--amber); }
   color: var(--muted);
   margin-top: 4px;
 }
-
 /* ===================== BOUTONS ===================== */
 .btn-primary{
   background: var(--cyan);
@@ -270,6 +296,7 @@ h1 span{ color: var(--amber); }
   padding: 10px 12px;
   background: rgba(232, 97, 90, 0.08);
 }
+
 /* ===================== SECTION PROJETS ===================== */
 .section-label{
   font-family:'Space Mono', monospace;
@@ -377,7 +404,6 @@ h1 span{ color: var(--amber); }
 .status-badge.submitted{ color: #a78bfa; border-color: #a78bfa; }
 .status-badge.validated{ color: var(--cyan); border-color: var(--cyan); }
 .status-badge.archived{ color: var(--muted); border-color: var(--muted); }
-
 /* ===================== MODALES ===================== */
 .modal-overlay{
   position: fixed;
@@ -422,6 +448,7 @@ h1 span{ color: var(--amber); }
   gap: 18px;
   margin-top: 10px;
 }
+
 /* ===================== LIVRABLES ÉDITABLES ===================== */
 .deliverables-edit-list{
   display: flex;
