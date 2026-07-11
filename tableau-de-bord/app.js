@@ -71,7 +71,6 @@ async function init() {
   await loadProfile();
   await loadMyProjects();
 }
-
 // ===================== LISTES DÉROULANTES ===================== 
 async function loadDisciplineOptions() {
   const { data } = await supabase.from('disciplines').select('id, name').eq('active', true).order('name');
@@ -119,7 +118,64 @@ async function loadProfile() {
   } else {
     roleBadge.hidden = true;
   }
+
+  // Lien vers la validation : visible pour teacher ET admin
+  const validationLink = document.getElementById('validation-link');
+  if (data.role === 'teacher' || data.role === 'admin') {
+    validationLink.hidden = false;
+  }
+
+  // Panneau de stats globales : visible pour admin UNIQUEMENT
+  if (data.role === 'admin') {
+    document.getElementById('admin-stats').hidden = false;
+    loadAdminStats();
+  }
 }
+
+async function loadAdminStats() {
+  // Compter les projets par statut, tous utilisateurs confondus
+  const { data: projects } = await supabase.from('projects').select('status, discipline_id, disciplines ( name )');
+
+  const counts = { draft: 0, in_progress: 0, submitted: 0, validated: 0 };
+  const byDiscipline = {};
+
+  (projects || []).forEach(p => {
+    if (counts[p.status] !== undefined) counts[p.status]++;
+    const name = p.disciplines?.name || 'Non renseignée';
+    byDiscipline[name] = (byDiscipline[name] || 0) + 1;
+  });
+
+  document.getElementById('stat-draft').textContent = counts.draft;
+  document.getElementById('stat-in-progress').textContent = counts.in_progress;
+  document.getElementById('stat-submitted').textContent = counts.submitted;
+  document.getElementById('stat-validated').textContent = counts.validated;
+
+  // Nombre total d'inscrits
+  const { count: userCount } = await supabase.from('profiles').select('*', { count: 'exact', head: true });
+  document.getElementById('stat-total-users').textContent = userCount ?? '—';
+
+  // Inscrits par discipline
+  const { data: profilesByDiscipline } = await supabase
+    .from('profiles')
+    .select('discipline_id, disciplines ( name )');
+
+  const usersByDiscipline = {};
+  (profilesByDiscipline || []).forEach(p => {
+    const name = p.disciplines?.name || 'Non renseignée';
+    usersByDiscipline[name] = (usersByDiscipline[name] || 0) + 1;
+  });
+
+  const container = document.getElementById('stats-by-discipline');
+  container.innerHTML = '<div class="section-label small" style="margin-top:8px;">Inscrits par discipline</div>';
+  Object.entries(usersByDiscipline).forEach(([name, count]) => {
+    const row = document.createElement('div');
+    row.className = 'discipline-stat-row';
+    row.innerHTML = `<span>${name}</span><span>${count}</span>`;
+    container.appendChild(row);
+  });
+}
+
+document.getElementById('refresh-stats-btn')?.addEventListener('click', loadAdminStats);
 
 avatarInput.addEventListener('change', async () => {
   const file = avatarInput.files[0];
@@ -163,7 +219,6 @@ saveProfileBtn.addEventListener('click', async () => {
     setTimeout(() => { profileSuccess.hidden = true; }, 2500);
   }
 });
-
 // ===================== MES PROJETS =====================
 async function loadMyProjects() {
   const { data, error } = await supabase
