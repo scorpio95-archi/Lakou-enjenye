@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validation — Lakou Enjenyè</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/nav.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="frame">
+
+  <!-- ===================== MENU GLOBAL (coller nav.html ici) ===================== -->
+  <!-- Remplacer ce commentaire par le contenu de shared/nav.html -->
+
+  <!-- Affiché si pas connecté -->
+  <div id="auth-required" class="auth-required" hidden>
+    <p>Tu dois être connecté en tant qu'enseignant ou administrateur pour accéder à cette page.</p>
+    <a href="../connexion/index.html" class="btn-primary">Se connecter</a>
+  </div>
+
+  <!-- Affiché si connecté mais pas enseignant/admin -->
+  <div id="not-authorized" class="auth-required" hidden>
+    <p>Cette page est réservée aux enseignants et administrateurs.</p>
+    <a href="../index.html" class="btn-primary">Retour à l'accueil</a>
+  </div>
+
+  <main class="dashboard" id="dashboard-content" hidden>
+
+    <header class="dash-header">
+      <div class="eyebrow">Lakou Enjenyè — Espace enseignant</div>
+      <h1>Validation des <span>projets</span></h1>
+    </header>
+
+    <section class="projects-section">
+      <div class="section-label"><span class="num">§01</span> Projets soumis</div>
+
+      <div class="filters-row">
+        <select id="filter-discipline">
+          <option value="">Toutes les disciplines</option>
+        </select>
+      </div>
+
+      <div class="grid" id="submitted-grid">
+        <p class="loading-msg" id="loading-msg">Chargement des projets soumis...</p>
+        <p class="empty-msg" id="empty-msg" hidden>Aucun projet en attente de validation pour l'instant.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== MODALE VALIDATION ===================== -->
+  <div class="modal-overlay" id="review-modal" hidden>
+    <div class="modal-card modal-card-wide">
+      <button class="modal-close" id="review-modal-close" aria-label="Fermer">✕</button>
+
+      <div class="review-header">
+        <div class="modal-eyebrow" id="review-discipline">—</div>
+        <h2 id="review-title">Titre du projet</h2>
+        <p id="review-description">Description.</p>
+        <div class="review-meta">
+          <span>Étudiant : <strong id="review-student">—</strong></span>
+          <span>École : <strong id="review-school">—</strong></span>
+        </div>
+      </div>
+
+      <div class="section-label small"><span class="num">§02</span> Livrables</div>
+      <div class="deliverables-review-list" id="deliverables-review-list">
+        <!-- injecté par app.js -->
+      </div>
+
+      <div class="validate-project-row">
+        <button class="btn-primary" id="validate-project-btn">✓ Valider le projet entier</button>
+        <p class="form-success" id="review-success" hidden>Projet validé ✓</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+  <script src="../shared/nav.js" defer></script>
+</body>
+</html>
