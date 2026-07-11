@@ -34,6 +34,14 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
-  // Connexion réussie — redirection directe vers le tableau de bord
-  window.location.href = '../tableau-de-bord/index.html';
+  // Connexion réussie — redirection selon le rôle
+  const { data: profile } = await supabase.from('profiles').select('role').eq('id', data.user.id).single();
+
+  if (profile?.role === 'teacher' || profile?.role === 'admin') {
+    window.location.href = '../tableau-de-bord-enseignant/index.html';
+  } else if (profile?.role === 'visitor') {
+    window.location.href = '../index.html';
+  } else {
+    window.location.href = '../tableau-de-bord/index.html';
+  }
 });
