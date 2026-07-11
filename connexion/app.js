@@ -37,11 +37,10 @@ form.addEventListener('submit', async (e) => {
   // Connexion réussie — redirection selon le rôle
   const { data: profile } = await supabase.from('profiles').select('role').eq('id', data.user.id).single();
 
-  if (profile?.role === 'teacher' || profile?.role === 'admin') {
-    window.location.href = '../tableau-de-bord-enseignant/index.html';
-  } else if (profile?.role === 'visitor') {
+  if (profile?.role === 'visitor') {
     window.location.href = '../index.html';
   } else {
+    // student, teacher ET admin utilisent tous le même dashboard de gestion de projets
     window.location.href = '../tableau-de-bord/index.html';
   }
 });
