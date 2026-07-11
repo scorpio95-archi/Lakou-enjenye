@@ -11,55 +11,8 @@
 </head>
 <body class="frame">
 
-<!-- ===================== MENU GLOBAL — LAKOU ENJENYÈ ===================== -->
-<!-- À coller juste après <body class="frame"> sur CHAQUE page du site -->
-
-<nav class="main-nav" id="main-nav">
-  <div class="nav-inner">
-
-    <a href="/index.html" class="nav-logo">
-      <span class="nav-logo-mark">LE</span>
-      <span class="nav-logo-text">Lakou Enjenyè</span>
-    </a>
-
-    <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <div class="nav-links" id="nav-links">
-
-      <a href="/index.html" class="nav-link">Accueil</a>
-
-      <div class="nav-dropdown">
-        <button class="nav-link nav-dropdown-trigger" id="disciplines-trigger" aria-expanded="false">
-          Disciplines <span class="caret">▾</span>
-        </button>
-        <div class="nav-dropdown-menu" id="disciplines-menu">
-          <a href="/genie-civil/index.html">Génie Civil</a>
-          <a href="/genie-electrique/index.html">Génie Électrique</a>
-          <a href="/genie-informatique/index.html">Génie Informatique</a>
-          <a href="/electromecanique/index.html">Électromécanique</a>
-        </div>
-      </div>
-
-      <a href="/a-propos/index.html" class="nav-link">À propos</a>
-
-      <a href="/confidentialite/index.html" class="nav-link">Confidentialité & CGU</a>
-
-      <!-- Visible uniquement une fois connecté — nav.js retire "hidden" après vérification de session -->
-      <a href="/parametres/index.html" class="nav-link" id="nav-settings-link" hidden>Paramètres</a>
-
-      <!-- Zone dynamique : remplacée par nav.js selon l'état de connexion -->
-      <div class="nav-auth-zone" id="nav-auth-zone">
-        <a href="/connexion/index.html" class="nav-link nav-cta" id="nav-login-link">Connexion</a>
-        <a href="/inscription/index.html" class="nav-link nav-cta nav-cta-outline" id="nav-signup-link">Inscription</a>
-      </div>
-
-    </div>
-  </div>
-</nav>
-
-<!-- ===================== FIN MENU GLOBAL ===================== -->
+  <!-- ===================== MENU GLOBAL (coller nav.html ici) ===================== -->
+  <!-- Remplacer ce commentaire par le contenu de shared/nav.html -->
 
   <!-- ===================== GARDE-FOU CONNEXION ===================== -->
   <!-- Affiché uniquement si personne n'est connecté (app.js gère le hidden) -->
@@ -75,7 +28,39 @@
     <header class="dash-header">
       <div class="eyebrow">Lakou Enjenyè — Espace personnel</div>
       <h1>Mon <span>Tableau de bord</span></h1>
+      <a href="../tableau-de-bord-enseignant/index.html" class="btn-secondary" id="validation-link" hidden>Aller à la validation →</a>
     </header>
+
+    <!-- ----- Stats globales (admin uniquement) ----- -->
+    <section class="stats-panel" id="admin-stats" hidden>
+      <div class="section-label"><span class="num">§00</span> Vue d'ensemble (admin)</div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-value" id="stat-draft">—</span>
+          <span class="stat-label">Brouillons</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="stat-in-progress">—</span>
+          <span class="stat-label">En cours</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="stat-submitted">—</span>
+          <span class="stat-label">Soumis</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="stat-validated">—</span>
+          <span class="stat-label">Validés</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="stat-total-users">—</span>
+          <span class="stat-label">Inscrits (total)</span>
+        </div>
+      </div>
+      <div class="stats-by-discipline" id="stats-by-discipline">
+        <!-- injecté par app.js -->
+      </div>
+      <button class="btn-secondary" id="refresh-stats-btn">↻ Actualiser</button>
+    </section>
 
     <!-- ----- Profil ----- -->
     <section class="profile-card" id="profile-card">
