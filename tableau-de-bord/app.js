@@ -71,6 +71,7 @@ async function init() {
   await loadProfile();
   await loadMyProjects();
 }
+
 // ===================== LISTES DÉROULANTES ===================== 
 async function loadDisciplineOptions() {
   const { data } = await supabase.from('disciplines').select('id, name').eq('active', true).order('name');
@@ -219,6 +220,7 @@ saveProfileBtn.addEventListener('click', async () => {
     setTimeout(() => { profileSuccess.hidden = true; }, 2500);
   }
 });
+
 // ===================== MES PROJETS =====================
 async function loadMyProjects() {
   const { data, error } = await supabase
@@ -293,18 +295,44 @@ newProjectBtn.addEventListener('click', () => { createModal.hidden = false; });
 createModalClose.addEventListener('click', () => { createModal.hidden = true; });
 createModal.addEventListener('click', (e) => { if (e.target === createModal) createModal.hidden = true; });
 
+document.getElementById('new-cover').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  document.getElementById('cover-filename').textContent = file ? file.name : '';
+});
+
 createForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   createError.hidden = true;
 
   const title = document.getElementById('new-title').value.trim();
   const description = document.getElementById('new-description').value.trim();
-  const cover = document.getElementById('new-cover').value.trim();
+  const coverFile = document.getElementById('new-cover').files[0];
 
   if (!currentProfile?.discipline_id) {
     createError.textContent = "Renseigne d'abord ta discipline dans ton profil avant de créer un projet.";
     createError.hidden = false;
     return;
+  }
+
+  const submitBtn = document.getElementById('create-submit-btn');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Création en cours...';
+
+  let coverUrl = null;
+  if (coverFile) {
+    const ext = coverFile.name.split('.').pop();
+    const path = `${currentUser.id}/${Date.now()}.${ext}`;
+    const { error: uploadError } = await supabase.storage.from('covers').upload(path, coverFile);
+
+    if (uploadError) {
+      createError.textContent = "Erreur lors de l'upload de l'image : " + uploadError.message;
+      createError.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Créer le projet';
+      return;
+    }
+    const { data: urlData } = supabase.storage.from('covers').getPublicUrl(path);
+    coverUrl = urlData.publicUrl;
   }
 
   const { error } = await supabase.from('projects').insert({
@@ -313,9 +341,12 @@ createForm.addEventListener('submit', async (e) => {
     school_id: currentProfile.school_id,
     title,
     description,
-    cover_image_url: cover || null,
+    cover_image_url: coverUrl,
     status: 'draft'
   });
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = 'Créer le projet';
 
   if (error) {
     createError.textContent = 'Erreur : ' + error.message;
@@ -324,6 +355,7 @@ createForm.addEventListener('submit', async (e) => {
   }
 
   createForm.reset();
+  document.getElementById('cover-filename').textContent = '';
   createModal.hidden = true;
   await loadMyProjects();
 });
