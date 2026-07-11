@@ -51,6 +51,18 @@ async function init() {
   }
 
   currentUser = session.user;
+
+  // Vérifier le rôle : un "curieux" ne peut pas accéder au dashboard étudiant
+  const { data: profileCheck } = await supabase.from('profiles').select('role').eq('id', currentUser.id).single();
+  if (profileCheck?.role === 'visitor') {
+    authRequired.hidden = false;
+    authRequired.querySelector('p').textContent = "Ton compte est un compte \"Curieux\" — tu peux explorer les archives publiques, mais la création de projets est réservée aux étudiants.";
+    authRequired.querySelector('a').textContent = 'Explorer les archives';
+    authRequired.querySelector('a').href = '../index.html';
+    dashboardContent.hidden = true;
+    return;
+  }
+
   authRequired.hidden = true;
   dashboardContent.hidden = false;
 
@@ -151,6 +163,8 @@ saveProfileBtn.addEventListener('click', async () => {
     setTimeout(() => { profileSuccess.hidden = true; }, 2500);
   }
 });
+
+// ===================== MES PROJETS =====================
 async function loadMyProjects() {
   const { data, error } = await supabase
     .from('projects')
