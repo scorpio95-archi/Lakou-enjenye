@@ -659,3 +659,14 @@ h1{
   text-decoration: underline;
 }
 
+/* ===== Fil d'ariane réseau Lakou ===== */
+.lakou-network-bar{
+  display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+  font-family:sans-serif; font-size:0.72rem;
+  background:#211712; color:#f2e4c8;
+  padding:7px 16px; letter-spacing:0.02em;
+}
+.lakou-network-bar a{ color:#f2e4c8; text-decoration:none; font-weight:700; }
+.lakou-network-bar a:hover{ text-decoration:underline; }
+.lakou-network-bar .lakou-sep{ opacity:0.4; }
+.lakou-network-bar .lakou-current{ opacity:0.6; }
