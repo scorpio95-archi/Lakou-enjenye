@@ -8,7 +8,37 @@
   --ink: #0a1930;
   --muted: #5c7699;
 }
+/* ===================== FICHE TECHNIQUE PAR DISCIPLINE ===================== */
+/* À coller dans style.css (page d'accueil), n'importe où après le bloc :root */
 
+.card-facts{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 4px 0 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--blue-line);
+}
+
+.card-facts .fact{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.card-facts dt{
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.card-facts dd{
+  font-size: .85rem;
+  line-height: 1.55;
+  color: #c8d6e8;
+}
 *{ box-sizing: border-box; margin:0; padding:0; }
 
 body{
