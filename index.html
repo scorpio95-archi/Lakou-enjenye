@@ -8,6 +8,45 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+  /* ----- Repli des fiches techniques + cartes en maintenance ----- */
+  .card-facts[hidden]{ display:none !important; }
+
+  .fact-toggle{
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    color: var(--safety, #e3a72e);
+    font-family: 'Space Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 6px 0;
+    margin-top: 4px;
+  }
+  .fact-toggle:hover{ text-decoration: underline; }
+
+  .card-disabled{
+    cursor: default;
+    opacity: .6;
+    pointer-events: auto; /* garde le fact-toggle cliquable */
+  }
+  .card-disabled:hover{ transform: none !important; }
+  .card-disabled .card-image{ filter: grayscale(60%); }
+
+  .maintenance-label{
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: var(--steel, #a49c8f);
+    border: 1px solid var(--mortar, rgba(255,255,255,0.15));
+    padding: 4px 10px;
+  }
+</style>
 </head>
 <body class="frame">
 <div class="lakou-network-bar">
@@ -35,18 +74,6 @@
       <a href="/index.html" class="nav-link">Accueil</a>
 
       <a href="/articles/index.html" class="nav-link">Articles</a>
-
-      <div class="nav-dropdown">
-        <button class="nav-link nav-dropdown-trigger" id="disciplines-trigger" aria-expanded="false">
-          Disciplines <span class="caret">▾</span>
-        </button>
-        <div class="nav-dropdown-menu" id="disciplines-menu">
-          <a href="/genie-civil/index.html">Génie Civil</a>
-          <a href="/genie-electrique/index.html">Génie Électrique</a>
-          <a href="/genie-informatique/index.html">Génie Informatique</a>
-          <a href="/electromecanique/index.html">Électromécanique</a>
-        </div>
-      </div>
 
       <a href="/a-propos/index.html" class="nav-link">À propos</a>
 
@@ -86,65 +113,69 @@
     <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M4 21V9l8-5 8 5v12M9 21v-6h6v6M7 12h.01M12 12h.01M17 12h.01"/></svg></div>
     <h3>Génie Civil</h3>
     <p>Conception de structures, bâtiments, ponts et infrastructures routières. Calculs de charge, matériaux, et résistance des sols.</p>
-    <dl class="card-facts">
+    <dl class="card-facts" id="facts-civil" hidden>
       <div class="fact"><dt>Qu'est-ce que c'est</dt><dd>La discipline qui conçoit et construit les infrastructures physiques — bâtiments, ponts, routes, réseaux d'eau — en garantissant leur solidité et leur sécurité.</dd></div>
       <div class="fact"><dt>Ce qu'elle fait</dt><dd>Étudie la résistance des sols, dimensionne les structures, planifie les chantiers et s'assure de la conformité aux normes de construction.</dd></div>
       <div class="fact"><dt>Dans l'archive</dt><dd>Plans techniques, calculs de charge, rapports géotechniques, métrés et dossiers de conformité publiés par les étudiants.</dd></div>
       <div class="fact"><dt>Durée des études</dt><dd>5 ans, du niveau L1 au niveau M2, dans les facultés d'ingénierie haïtiennes.</dd></div>
     </dl>
-    <div class="meta"><span>Archive technique</span><span class="go">Voir l'archive →</span></div>
+    <button type="button" class="fact-toggle" data-target="facts-civil">Lire la suite →</button>
+    <div class="meta"><span>Archive technique</span><span class="go">Voir davantage</span></div>
   </div>
 </a>
 
-    <a class="card" data-index="E-02" href="genie-electrique/index.html">
+    <div class="card card-disabled" data-index="E-02">
   <div class="corner"></div>
   <img class="card-image" src="https://bblhqjdymssqhfbwoxie.supabase.co/storage/v1/object/public/covers/037b2fdacb00581997811810ba5d5fd6.jpg" alt="Génie Électrique">
   <div class="card-body">
     <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
     <h3>Génie Électrique</h3>
     <p>Systèmes électriques, production et distribution d'énergie, réseaux, automatisation et électronique de puissance.</p>
-    <dl class="card-facts">
+    <dl class="card-facts" id="facts-elec" hidden>
       <div class="fact"><dt>Qu'est-ce que c'est</dt><dd>La discipline qui conçoit les systèmes de production, de transport et de distribution d'énergie électrique, ainsi que les circuits et automatismes.</dd></div>
       <div class="fact"><dt>Ce qu'elle fait</dt><dd>Dimensionne les installations électriques, conçoit des schémas unifilaires et développe des systèmes d'automatisation et d'électronique de puissance.</dd></div>
       <div class="fact"><dt>Dans l'archive</dt><dd>Schémas unifilaires, calculs de dimensionnement, fiches composants et dossiers de conformité aux normes électriques.</dd></div>
       <div class="fact"><dt>Durée des études</dt><dd>5 ans, du niveau L1 au niveau M2, dans les facultés d'ingénierie haïtiennes.</dd></div>
     </dl>
-    <div class="meta"><span>Archive technique</span><span class="go">Voir l'archive →</span></div>
+    <button type="button" class="fact-toggle" data-target="facts-elec">Lire la suite →</button>
+    <div class="meta"><span>Archive technique</span><span class="maintenance-label">En maintenance</span></div>
   </div>
-</a>
+</div>
 
-    <a class="card" data-index="I-03" href="genie-informatique/index.html">
+    <div class="card card-disabled" data-index="I-03">
   <div class="corner"></div>
   <img class="card-image" src="https://bblhqjdymssqhfbwoxie.supabase.co/storage/v1/object/public/covers/754c7b4129faa5bd5d8e6b0ba629f459.jpg" alt="Génie Informatique">
   <div class="card-body">
     <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M9 9h6v6H9zM4 9h2M4 15h2M18 9h2M18 15h2M9 4v2M15 4v2M9 18v2M15 18v2"/></svg></div>
     <h3>Génie Informatique</h3>
     <p>Logiciels, systèmes embarqués, réseaux informatiques et solutions numériques appliquées à des problèmes concrets.</p>
-    <dl class="card-facts">
+    <dl class="card-facts" id="facts-info" hidden>
       <div class="fact"><dt>Qu'est-ce que c'est</dt><dd>La discipline qui conçoit des logiciels, systèmes informatiques et solutions numériques appliqués à des problèmes concrets.</dd></div>
       <div class="fact"><dt>Ce qu'elle fait</dt><dd>Développe des applications, structure des bases de données, conçoit des systèmes embarqués et met en place des réseaux informatiques.</dd></div>
       <div class="fact"><dt>Dans l'archive</dt><dd>Dépôts de code, diagrammes d'architecture, démonstrations fonctionnelles et documentation technique des projets étudiants.</dd></div>
       <div class="fact"><dt>Durée des études</dt><dd>4 à 5 ans selon l'établissement.</dd></div>
     </dl>
-    <div class="meta"><span>Archive technique</span><span class="go">Voir l'archive →</span></div>
+    <button type="button" class="fact-toggle" data-target="facts-info">Lire la suite →</button>
+    <div class="meta"><span>Archive technique</span><span class="maintenance-label">En maintenance</span></div>
   </div>
-</a>
-    <a class="card" data-index="M-04" href="electromecanique/index.html">
+</div>
+    <div class="card card-disabled" data-index="M-04">
   <div class="corner"></div>
   <img class="card-image" src="https://bblhqjdymssqhfbwoxie.supabase.co/storage/v1/object/public/covers/9613feef3e535293240ab2a6b1f71181.jpg" alt="Électromécanique">
   <div class="card-body">
     <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
     <h3>Électromécanique</h3>
     <p>Machines, moteurs, automatismes et systèmes combinant mécanique et électricité.</p>
-    <dl class="card-facts">
+    <dl class="card-facts" id="facts-mecatro" hidden>
       <div class="fact"><dt>Qu'est-ce que c'est</dt><dd>La discipline qui combine mécanique et électricité pour concevoir machines, moteurs et systèmes automatisés.</dd></div>
       <div class="fact"><dt>Ce qu'elle fait</dt><dd>Dimensionne des composants mécaniques, intègre des systèmes de contrôle électrique et conçoit des modèles 3D de machines et d'assemblages.</dd></div>
       <div class="fact"><dt>Dans l'archive</dt><dd>Modèles 3D, calculs thermiques et mécaniques, plans d'assemblage et dossiers de conformité aux normes.</dd></div>
       <div class="fact"><dt>Durée des études</dt><dd>5 ans, du niveau L1 au niveau M2, dans les facultés d'ingénierie haïtiennes.</dd></div>
     </dl>
-    <div class="meta"><span>Archive technique</span><span class="go">Voir l'archive →</span></div>
+    <button type="button" class="fact-toggle" data-target="facts-mecatro">Lire la suite →</button>
+    <div class="meta"><span>Archive technique</span><span class="maintenance-label">En maintenance</span></div>
   </div>
-</a>
+</div>
 
   </div>
 </main>
@@ -154,6 +185,19 @@
   <span>V.01</span>
 </footer>
   <script src="shared/nav.js" defer></script>
+  <script>
+    document.querySelectorAll('.fact-toggle').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const target = document.getElementById(btn.dataset.target);
+        if (!target) return;
+        const isHidden = target.hidden;
+        target.hidden = !isHidden;
+        btn.textContent = isHidden ? 'Moins' : 'Lire la suite →';
+      });
+    });
+  </script>
   </body>
  
 </html>
